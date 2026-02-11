@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.vscode/
+
+# data artifacts
+/data/raw/
+/data/normalized/
+/data/features/
