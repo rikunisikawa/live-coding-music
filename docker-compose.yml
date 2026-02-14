@@ -1,0 +1,19 @@
+services:
+  dbt:
+    build:
+      context: .
+      dockerfile: docker/dbt/Dockerfile
+    volumes:
+      - .:/work
+      - ${HOME}/.aws:/root/.aws:ro
+    working_dir: /work
+    environment:
+      - DBT_PROFILES_DIR=/work/configs/dbt
+  terraform:
+    build:
+      context: .
+      dockerfile: docker/terraform/Dockerfile
+    volumes:
+      - .:/work
+      - ${HOME}/.aws:/root/.aws:ro
+    working_dir: /work
