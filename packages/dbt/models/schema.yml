@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: events
+
+models:
+  - name: stg_example_events
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+
+  - name: core_events
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+
+  - name: mart_event_counts
+    columns:
+      - name: event_date
+        tests: [not_null]

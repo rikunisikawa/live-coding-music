@@ -1,0 +1,11 @@
+ai_native_data_platform:
+  target: dev
+  outputs:
+    dev:
+      type: athena
+      s3_staging_dir: s3://your-athena-staging-bucket/dbt/
+      region_name: ap-northeast-1
+      database: your_glue_catalog
+      schema: dbt
+      threads: 4
+      work_group: primary

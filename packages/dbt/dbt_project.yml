@@ -1,0 +1,19 @@
+name: 'ai_native_data_platform'
+version: '1.0.0'
+config-version: 2
+
+profile: 'ai_native_data_platform'
+
+model-paths: ['models']
+seed-paths: ['seeds']
+macro-paths: ['macros']
+test-paths: ['tests']
+
+models:
+  ai_native_data_platform:
+    staging:
+      +materialized: view
+    core:
+      +materialized: table
+    mart:
+      +materialized: table
