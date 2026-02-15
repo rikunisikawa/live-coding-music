@@ -8,6 +8,6 @@ RUN apt-get update \
 
 RUN pip install --no-cache-dir \
     dbt-core==1.7.9 \
-    dbt-athena-community==1.7.4
+    dbt-athena==1.7.2
 
 WORKDIR /work

@@ -43,4 +43,4 @@ fi
 cd "${TF_DIR}"
 
 terraform init -input=false -backend-config="${BACKEND_CFG}"
-terraform plan -var-file="${VAR_FILE}"
+terraform apply -auto-approve -var-file="${VAR_FILE}"
