@@ -14,6 +14,16 @@
 ## ツール非依存の前提
 本リポジトリは Codex / Claude / Gemini CLI で同一の運用ができることを前提とする。MCP サーバーの導入と利用ルールは `docs/mcp_setup.md` を参照する。
 
+## Spec 駆動の必須ルール
+- 実装前に Spec を作成する。
+- Spec が未合意の場合、コード変更を開始しない。
+- ワークフローは `docs/spec_workflow.md` に従う。
+- Spec 作成時は `docs/spec_template.md` を利用する。
+- Spec は `docs/specs/` に配置する。
+- Spec 命名規則は `YYYYMMDD_snake_case.md` とする。
+- コミットメッセージは `spec:<spec_id> <内容>` 形式とする。
+- PR タイトルは `[<spec_id>] <要約>` 形式とする。
+
 ## Skills の参照先
 - リポジトリ内: `ai/skills/`
 - ローカル共通: `~/.codex/skills/`
@@ -52,7 +62,7 @@
 
 ## Git 開発サイクル（PR作成まで）
 1. 実装と検証が完了したら `scripts/run_git_cycle.sh` を実行する。
-2. 例: `scripts/run_git_cycle.sh -m "変更内容" -t "PRタイトル"`
+2. 例: `scripts/run_git_cycle.sh -s "20260215_git_pr_cycle" -m "変更内容" -t "PRタイトル"`
 3. 内部で `git add -A`、`git commit`、`git push`、`gh pr create` を順に実行する。
 4. `-b` オプションでベースブランチを指定できる（未指定時は `origin/HEAD` を利用）。
 

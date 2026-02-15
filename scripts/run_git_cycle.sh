@@ -7,20 +7,24 @@ cd "${ROOT_DIR}"
 usage() {
   cat <<'USAGE'
 使い方:
-  scripts/run_git_cycle.sh -m "コミットメッセージ" [-t "PRタイトル"] [-b "ベースブランチ"]
+  scripts/run_git_cycle.sh -s "<spec_id>" -m "コミットメッセージ" [-t "PRタイトル"] [-b "ベースブランチ"]
 
 例:
-  scripts/run_git_cycle.sh -m "dbtモデルの追加" -t "dbtモデル追加と運用更新"
-  scripts/run_git_cycle.sh -m "Terraform変数整理" -b "main"
+  scripts/run_git_cycle.sh -s "20260215_git_pr_cycle" -m "dbtモデルの追加" -t "dbtモデル追加と運用更新"
+  scripts/run_git_cycle.sh -s "20260215_tfvars_refactor" -m "Terraform変数整理" -b "main"
 USAGE
 }
 
+SPEC_ID=""
 COMMIT_MESSAGE=""
 PR_TITLE=""
 BASE_BRANCH=""
 
-while getopts ":m:t:b:h" opt; do
+while getopts ":s:m:t:b:h" opt; do
   case "${opt}" in
+    s)
+      SPEC_ID="${OPTARG}"
+      ;;
     m)
       COMMIT_MESSAGE="${OPTARG}"
       ;;
@@ -47,10 +51,34 @@ while getopts ":m:t:b:h" opt; do
   esac
 done
 
+if [[ -z "${SPEC_ID}" ]]; then
+  echo "Spec ID を指定してください。"
+  usage
+  exit 1
+fi
+
+if [[ ! "${SPEC_ID}" =~ ^[0-9]{8}_[a-z0-9_]+$ ]]; then
+  echo "Spec ID の形式が不正です: ${SPEC_ID}"
+  echo "形式: YYYYMMDD_snake_case（例: 20260215_git_pr_cycle）"
+  exit 1
+fi
+
+SPEC_PATH="docs/specs/${SPEC_ID}.md"
+if [[ ! -f "${SPEC_PATH}" ]]; then
+  echo "Spec ファイルが見つかりません: ${SPEC_PATH}"
+  echo "先に Spec を作成してから実行してください。"
+  exit 1
+fi
+
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
   echo "コミットメッセージを指定してください。"
   usage
   exit 1
+fi
+
+FINAL_COMMIT_MESSAGE="${COMMIT_MESSAGE}"
+if [[ ! "${COMMIT_MESSAGE}" =~ ^spec:${SPEC_ID}[[:space:]] ]]; then
+  FINAL_COMMIT_MESSAGE="spec:${SPEC_ID} ${COMMIT_MESSAGE}"
 fi
 
 if ! command -v gh >/dev/null 2>&1; then
@@ -88,6 +116,10 @@ if [[ -z "${PR_TITLE}" ]]; then
   PR_TITLE="${COMMIT_MESSAGE}"
 fi
 
+if [[ ! "${PR_TITLE}" =~ ^\[${SPEC_ID}\] ]]; then
+  PR_TITLE="[${SPEC_ID}] ${PR_TITLE}"
+fi
+
 echo "[1/4] 変更をステージングします"
 git add -A
 
@@ -95,7 +127,7 @@ echo "[2/4] コミットを作成します"
 if git diff --cached --quiet; then
   echo "ステージ済み変更がないため、コミット作成をスキップします。"
 else
-  git commit -m "${COMMIT_MESSAGE}"
+  git commit -m "${FINAL_COMMIT_MESSAGE}"
 fi
 
 echo "[3/4] リモートへ push します"
@@ -116,6 +148,8 @@ PR_BODY_FILE="$(mktemp)"
 trap 'rm -f "${PR_BODY_FILE}"' EXIT
 
 cat > "${PR_BODY_FILE}" <<PRBODY
+Spec: ${SPEC_PATH}
+
 ## 概要
 - 変更内容を記載してください
 

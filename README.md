@@ -13,6 +13,16 @@ Fitbit Web API から取得したヘルスケアデータ（心拍・睡眠・�
 ## 開発方針
 本プロジェクトの開発方針は「AIエージェントが主体となって自律的に開発・運用できるAIネイティブデータ基盤」です。人間は指示とレビューに集中し、実装・運用はAIエージェントが自律的に行える構造を前提とします。
 
+## Spec 駆動開発
+- 本プロジェクトは Spec 形式の要件定義を起点に開発する。
+- 実装前に Spec を作成し、合意後に実装へ進む。
+- ワークフロー: `docs/spec_workflow.md`
+- テンプレート: `docs/spec_template.md`
+- Spec 配置先: `docs/specs/`
+- Spec 命名規則: `YYYYMMDD_snake_case.md`
+- コミット規約: `spec:<spec_id> <内容>`
+- PRタイトル規約: `[<spec_id>] <要約>`
+
 ## AIツール共通運用
 本リポジトリは Codex / Claude / Gemini CLI のいずれでも同一の設計・運用ができる「ツール非依存」を前提とする。MCP サーバー設定は `docs/mcp_setup.md` を参照する。
 
@@ -84,7 +94,7 @@ tests/               # 単体/統合テスト
 
 ## 開発サイクル（PR作成まで）
 - 変更の確定からPR作成までを一括実行する場合は次を使う。
-  - `scripts/run_git_cycle.sh -m "コミットメッセージ" -t "PRタイトル"`
+  - `scripts/run_git_cycle.sh -s "YYYYMMDD_snake_case" -m "コミットメッセージ" -t "PRタイトル"`
 - 処理内容は `git add -A` → `git commit` → `git push` → `gh pr create` の順で実行。
 - `-b` でベースブランチを指定可能（未指定時は `origin/HEAD` を自動利用）。
 - 実行前提として `gh auth login` による GitHub CLI 認証が必要。
