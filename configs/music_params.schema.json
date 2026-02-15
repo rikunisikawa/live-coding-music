@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MusicParams",
+  "type": "object",
+  "required": ["timestamp", "tempo", "intensity"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "description": "UTC ISO8601 timestamp"
+    },
+    "tempo": {
+      "type": "object",
+      "required": ["bpm"],
+      "properties": {
+        "bpm": {"type": "number", "minimum": 30, "maximum": 240},
+        "swing": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "intensity": {
+      "type": "object",
+      "properties": {
+        "level": {"type": "number", "minimum": 0, "maximum": 1},
+        "dynamic_range": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "mood": {
+      "type": "object",
+      "properties": {
+        "valence": {"type": "number", "minimum": -1, "maximum": 1},
+        "arousal": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

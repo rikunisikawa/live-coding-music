@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: "{{ env_var('ATHENA_SCHEMA_RAW', 'livecoding-music_raw') }}"
+    tables:
+      - name: events
+
+models:
+  - name: stg_example_events
+    schema: "{{ env_var('ATHENA_SCHEMA_STAGING', 'livecoding-music_staging') }}"
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+
+  - name: core_events
+    schema: "{{ env_var('ATHENA_SCHEMA_STAGING', 'livecoding-music_staging') }}"
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+
+  - name: mart_event_counts
+    schema: "{{ env_var('ATHENA_SCHEMA_MART', 'livecoding-music_mart') }}"
+    columns:
+      - name: event_date
+        tests: [not_null]

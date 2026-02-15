@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/filesystem-mcp-server@latest"],
+      "env": {
+        "MCP_PROJECT_ROOT": "/home/riku_nishikawa/dev/live-coding-music"
+      }
+    },
+    "aws": {
+      "command": "uvx",
+      "args": ["awslabs.aws-api-mcp-server@latest"],
+      "env": {
+        "AWS_REGION": "ap-northeast-1",
+        "AWS_API_MCP_PROFILE_NAME": "default",
+        "AWS_API_MCP_TRANSPORT": "stdio"
+      }
+    },
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_PROJECT_DIR": "/home/riku_nishikawa/dev/live-coding-music/packages/dbt",
+        "DBT_PATH": "/home/riku_nishikawa/dev/live-coding-music/scripts/dbt_cli.sh"
+      }
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/git-mcp-server@latest"],
+      "env": {
+        "MCP_TRANSPORT_TYPE": "stdio",
+        "MCP_TRANSPORT": "stdio",
+        "MCP_LOG_LEVEL": "info",
+        "GIT_BASE_DIR": "/home/riku_nishikawa/dev/live-coding-music",
+        "GIT_SIGN_COMMITS": "false"
+      }
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "env": {
+        "FETCH_ALLOWLIST": "docs.aws.amazon.com,aws.amazon.com,awslabs.github.io,docs.getdbt.com,github.com,zenn.dev,qiita.com"
+      }
+    },
+    "mermaid": {
+      "command": "uvx",
+      "args": ["--from", "mcp-mermaid-image-gen", "mcp_mermaid_image_gen"]
+    },
+    "drawio": {
+      "command": "npx",
+      "args": ["-y", "@drawio/mcp"]
+    }
+  }
+}

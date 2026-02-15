@@ -1,0 +1,19 @@
+ai_native_data_platform:
+  target: "{{ env_var('APP_ENV', 'dev') }}"
+  outputs:
+    dev:
+      type: athena
+      s3_staging_dir: "{{ env_var('ATHENA_S3_STAGING_DIR_DEV') }}"
+      region_name: "{{ env_var('ATHENA_REGION', 'ap-northeast-1') }}"
+      catalog: "{{ env_var('ATHENA_CATALOG', 'AwsDataCatalog') }}"
+      schema: "{{ env_var('ATHENA_SCHEMA_DEV', 'analytics') }}"
+      threads: 4
+      work_group: "{{ env_var('ATHENA_WORK_GROUP_DEV', 'primary') }}"
+    prod:
+      type: athena
+      s3_staging_dir: "{{ env_var('ATHENA_S3_STAGING_DIR_PROD') }}"
+      region_name: "{{ env_var('ATHENA_REGION', 'ap-northeast-1') }}"
+      catalog: "{{ env_var('ATHENA_CATALOG', 'AwsDataCatalog') }}"
+      schema: "{{ env_var('ATHENA_SCHEMA_PROD', 'analytics') }}"
+      threads: 8
+      work_group: "{{ env_var('ATHENA_WORK_GROUP_PROD', 'primary') }}"

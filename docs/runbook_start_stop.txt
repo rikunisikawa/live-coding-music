@@ -1,0 +1,58 @@
+# FoxDot ライブコーディング Runbook: 起動および停止手順
+
+このドキュメントは、WSL開発環境から同期されたファイルを使用して、Windows実行環境でのライブコーディングパフォーマンスにおけるFoxDotの起動および停止に関する標準的な操作手順を概説します。
+
+## 1. WSL 開発環境 (現在作業中の環境)
+
+1.  **FoxDotセットの開発:** FoxDotパフォーマンススクリプトを `performance/sets/` に作成または修正します。
+2.  **Windowsへの同期:** 変更を行った後、ファイルをWindowsマシンに転送するために同期スクリプトを実行します。
+    ```bash
+    ./scripts/sync_to_windows.sh
+    ```
+    **重要:** `sync_to_windows.sh` 内の `WINDOWS_PROJECT_ROOT` が、Windows上のFoxDotプロジェクトのルートに正しく設定されていることを確認してください。
+
+## 2. Windows 実行環境
+
+### FoxDotの起動
+
+1.  **SuperColliderの起動:** WindowsマシンでSuperColliderアプリケーションを起動します。
+2.  **SuperColliderサーバーの起動:** SuperColliderで、サーバーが実行中であることを確認します（通常は `Ctrl+B` を押すか、「Server」->「Boot Server」を選択します）。
+3.  **FoxDot (Python) の起動:** Python環境（例: コマンドプロンプト、PowerShell、またはお好みのIDE）を開き、FoxDotを実行します。通常はプロジェクトディレクトリに移動して次のように実行します。
+    ```bash
+    python -m FoxDot
+    ```
+    または、特定のランチャースクリプトがある場合:
+    ```bash
+    python your_foxdot_launcher.py
+    ```
+    **注:** Python環境にFoxDotがインストールされており、SuperColliderに接続するように設定されていることを確認してください。
+
+### FoxDotの停止
+
+FoxDotのパフォーマンスを安全に停止することは非常に重要です。以下の方法が考慮されます。
+
+1.  **FoxDot `Clock.clear()`:**
+    *   FoxDotインタープリタ（またはFoxDotスクリプト）で `Clock.clear()` を実行し、すべてのスケジュールされたイベントを正常に停止します。これは、パフォーマンス中のソフトストップに推奨される方法です。
+    *   例:
+        ```python
+        # FoxDotスクリプトまたはインタープリタで
+        Clock.clear()
+        ```
+
+2.  **FoxDotインタープリタ `Ctrl+.` (Ctrl + ピリオド):**
+    *   FoxDotインタープリタコンソールで `Ctrl + .` (Control + ピリオド) を押します。これは、FoxDotの現在の実行を中断して停止するための一般的なショートカットです。
+
+3.  **SuperCollider `Server.local.quit`:**
+    *   SuperColliderで、SuperColliderドキュメントまたはコンソールで `Server.local.quit` を実行します。これにより、SuperColliderオーディオサーバーがシャットダウンされます。
+    *   例:
+        ```supercollider
+        Server.local.quit;
+        ```
+    *   **注意:** これは、FoxDotがPythonでまだ技術的に実行されている場合でも、すべてのサウンド生成を停止します。
+
+## 3. パフォーマンス後のクリーンアップ (オプション)
+
+*   FoxDotスクリプト内のグローバル変数や状態がセッション間で持続する場合は、それらをリセットすることを検討してください。
+
+---
+**覚えておいてください:** パフォーマンスを行う前に、必ずWSLからWindowsに変更を同期してください。
