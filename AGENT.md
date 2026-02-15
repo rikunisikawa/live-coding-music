@@ -50,6 +50,12 @@
 - dbt/infra の変更はスクリプト経由で検証する。
 - 破壊的変更は必ず人間に承認を求める。
 
+## Git 開発サイクル（PR作成まで）
+1. 実装と検証が完了したら `scripts/run_git_cycle.sh` を実行する。
+2. 例: `scripts/run_git_cycle.sh -m "変更内容" -t "PRタイトル"`
+3. 内部で `git add -A`、`git commit`、`git push`、`gh pr create` を順に実行する。
+4. `-b` オプションでベースブランチを指定できる（未指定時は `origin/HEAD` を利用）。
+
 ## 実行準備チェックリスト
 - `docs/setup_checklist.md` を参照して全項目を満たすこと。
 

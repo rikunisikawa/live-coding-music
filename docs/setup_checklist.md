@@ -36,3 +36,8 @@ AI自立開発の実行準備が完了しているかを確認するためのチ
 - [ ] `scripts/run_ingestion.sh` が成功する
 - [ ] `scripts/run_in_container.sh terraform-plan` が plan を生成できる
 - [ ] `scripts/run_in_container.sh dbt` が dbt run/test まで実行できる
+
+## 7. Git / PR 運用
+- [ ] GitHub CLI (`gh`) が利用可能
+- [ ] `gh auth login` 済み
+- [ ] `scripts/run_git_cycle.sh -m "テストコミット" -t "テストPR"` でPR作成まで実行できる

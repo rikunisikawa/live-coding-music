@@ -82,6 +82,13 @@ tests/               # 単体/統合テスト
 ## 実行準備チェック
 - `docs/setup_checklist.md` を参照する。
 
+## 開発サイクル（PR作成まで）
+- 変更の確定からPR作成までを一括実行する場合は次を使う。
+  - `scripts/run_git_cycle.sh -m "コミットメッセージ" -t "PRタイトル"`
+- 処理内容は `git add -A` → `git commit` → `git push` → `gh pr create` の順で実行。
+- `-b` でベースブランチを指定可能（未指定時は `origin/HEAD` を自動利用）。
+- 実行前提として `gh auth login` による GitHub CLI 認証が必要。
+
 ## Docker コンテナ運用
 - `docs/container_operations.md` を参照する。
 
