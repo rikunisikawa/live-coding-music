@@ -40,7 +40,7 @@ Codex / Claude / Gemini CLI のいずれでも同一の運用ができるよう�
 
 ## Skills の取り扱い
 Skills はツール非依存の Markdown として扱い、以下を共通参照する。
-- リポジトリ内: `ai/skills/`
+- リポジトリ内（正本）: `.agents/skills/`
 - ローカル共通: `~/.codex/skills/`
 
 各AIツールで同一の Skills を参照できるよう、MCP 設定とは独立に運用する。

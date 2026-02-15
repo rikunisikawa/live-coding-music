@@ -25,7 +25,7 @@
 - PR タイトルは `[<spec_id>] <要約>` 形式とする。
 
 ## Skills の参照先
-- リポジトリ内: `ai/skills/`
+- リポジトリ内（正本）: `.agents/skills/`
 - ローカル共通: `~/.codex/skills/`
 どちらもツール非依存の Markdown として扱う。
 

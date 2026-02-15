@@ -4,7 +4,7 @@
 
 ## 必須の事前チェックリスト
 コードやSQLを生成する前に、AIは必ず以下を実施すること:
-- `ai/skills/` 配下の全ファイルを読む。
+- `.agents/skills/` 配下の関連Skillを読む。
 - 各出力データセットの粒度（Grain）を定義する。
 - Fact と Dimension を識別する。
 - Layer（Raw/Core/Mart）と配置理由を説明する。

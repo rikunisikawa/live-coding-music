@@ -1,0 +1,11 @@
+display_name: Athena dbt Design
+short_description: Athena/Glue/dbt/S3の設計判断を統一する
+default_prompt: Athena + dbt のモデル設計とパーティション戦略を提案してください。
+dependencies:
+  tools:
+    - type: mcp
+      transport: streamable_http
+      url: https://mcp.example.com/dbt-metadata
+    - type: mcp
+      transport: streamable_http
+      url: https://mcp.example.com/schema-registry

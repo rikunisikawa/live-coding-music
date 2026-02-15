@@ -1,0 +1,8 @@
+display_name: dbt Modeling
+short_description: dbtモデル設計とテスト設計を標準化する
+default_prompt: dbtモデルをstaging/core/martで設計し、必要なテストを提案してください。
+dependencies:
+  tools:
+    - type: mcp
+      transport: streamable_http
+      url: https://mcp.example.com/dbt-metadata
