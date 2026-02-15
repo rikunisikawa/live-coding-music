@@ -25,6 +25,7 @@ Fitbit Web API から取得したヘルスケアデータ（心拍・睡眠・�
 
 ## AIツール共通運用
 本リポジトリは Codex / Claude / Gemini CLI のいずれでも同一の設計・運用ができる「ツール非依存」を前提とする。MCP サーバー設定は `docs/mcp_setup.md` を参照する。
+- MCP 設定のリポジトリ正本は `configs/mcp/` とし、`scripts/setup_mcp_for_tools.sh` で各ツールへ反映する。
 
 ## Skills の共通化方針
 Skills はツール非依存の Markdown として扱い、全AIエージェントで同一の知見を参照できるようにする。リポジトリ内の正本は `.agents/skills/` とし、必要に応じてローカルの共通 Skills（`~/.codex/skills/`）を補助参照する。
