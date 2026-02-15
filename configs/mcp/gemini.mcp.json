@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"],
+      "env": {
+        "MCP_PROJECT_ROOT": "/home/riku_nishikawa/dev/live-coding-music"
+      }
+    },
+    "aws": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"],
+      "env": {
+        "AWS_PROFILE": "CHANGE_ME"
+      }
+    },
+    "dbt": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"],
+      "env": {
+        "DBT_PROJECT_DIR": "/home/riku_nishikawa/dev/live-coding-music/packages/dbt"
+      }
+    },
+    "git": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"],
+      "env": {
+        "GIT_WORKDIR": "/home/riku_nishikawa/dev/live-coding-music"
+      }
+    },
+    "fetch": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"],
+      "env": {
+        "FETCH_ALLOWLIST": "CHANGE_ME"
+      }
+    },
+    "mermaid": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"]
+    },
+    "drawio": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"]
+    }
+  }
+}
