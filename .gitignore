@@ -4,8 +4,19 @@ __pycache__/
 .venv/
 .idea/
 .vscode/
+logs/
+scripts/logs/
 
 # data artifacts
 /data/raw/
 /data/normalized/
 /data/features/
+
+# dbt artifacts
+packages/dbt/target/
+packages/dbt/logs/
+configs/dbt/.user.yml
+
+# terraform artifacts
+packages/infra/.terraform/
+packages/infra/.terraform.lock.hcl
