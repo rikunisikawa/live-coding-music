@@ -2,6 +2,7 @@
 
 ## 0. Spec ID
 - spec_id: `20260215_fitbit_data_ingestion`
+- branch_name: `spec/20260215_fitbit_data_ingestion`
 
 ## 1. 背景
 - 現在リポジトリには Fitbit API 取り込みの本体実装がなく、`BaseIngestion` の雛形のみが存在する。
