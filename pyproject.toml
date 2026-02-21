@@ -4,5 +4,8 @@ version = "0.1.0"
 description = "Fitbit API data to near-real-time music parameters pipeline"
 requires-python = ">=3.10"
 
+[project.scripts]
+fitbit-music = "fitbit_music.cli:main"
+
 [tool.setuptools]
 packages = ["fitbit_music"]
