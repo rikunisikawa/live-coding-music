@@ -1,0 +1,54 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/filesystem-mcp-server@latest"],
+      "env": {
+        "MCP_PROJECT_ROOT": "/home/riku_nishikawa/dev/live-coding-music"
+      }
+    },
+    "aws": {
+      "command": "pipx",
+      "args": [
+        "run",
+        "--spec",
+        "awslabs.aws-api-mcp-server",
+        "python",
+        "-m",
+        "awslabs.aws_api_mcp_server.server"
+      ],
+      "env": {
+        "AWS_REGION": "ap-northeast-1",
+        "AWS_API_MCP_PROFILE_NAME": "default"
+      }
+    },
+    "terraform": {
+      "command": "CHANGE_ME",
+      "args": ["CHANGE_ME"],
+      "env": {
+        "TERRAFORM_WORKDIR": "/home/riku_nishikawa/dev/live-coding-music/packages/infra"
+      }
+    },
+    "dbt": {
+      "command": "uvx",
+      "args": ["dbt-mcp"],
+      "env": {
+        "DBT_PROJECT_DIR": "/home/riku_nishikawa/dev/live-coding-music/packages/dbt",
+        "DBT_PATH": "dbt"
+      }
+    },
+    "drawio": {
+      "command": "npx",
+      "args": ["-y", "drawio-mcp-server"]
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/git-mcp-server@latest"],
+      "env": {
+        "MCP_LOG_LEVEL": "info",
+        "GIT_BASE_DIR": "/home/riku_nishikawa/dev/live-coding-music",
+        "GIT_SIGN_COMMITS": "false"
+      }
+    }
+  }
+}
