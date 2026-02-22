@@ -22,13 +22,6 @@
         "AWS_API_MCP_PROFILE_NAME": "default"
       }
     },
-    "terraform": {
-      "command": "CHANGE_ME",
-      "args": ["CHANGE_ME"],
-      "env": {
-        "TERRAFORM_WORKDIR": "/home/riku_nishikawa/dev/live-coding-music/packages/infra"
-      }
-    },
     "dbt": {
       "command": "uvx",
       "args": ["dbt-mcp"],

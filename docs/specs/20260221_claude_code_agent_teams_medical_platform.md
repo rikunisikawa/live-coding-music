@@ -79,10 +79,10 @@
 - Review Agent は全差分をレビューし、重大指摘が解消されるまで完了不可。
 
 ## 5. MCP Servers 利用方針
-- 必須MCP: `aws`, `terraform`, `dbt`, `drawio`, `filesystem`, `git`
+- 必須MCP: `aws`, `dbt`, `drawio`, `filesystem`, `git`
+- Terraform は MCP 経由ではなく `docker/terraform/` 経由で CLI 実行する。
 - 利用目的:
   - aws: 構成確認、影響範囲把握
-  - terraform: IaC生成/検証
   - dbt: モデル検証/依存関係把握
   - drawio: アーキテクチャ図生成
   - filesystem: ファイル編集/構造管理

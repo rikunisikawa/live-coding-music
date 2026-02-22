@@ -10,7 +10,6 @@ Codex / Claude / Gemini CLI のいずれでも同一の運用ができるよう�
 - Git MCP
 - Fetch MCP
 - Mermaid MCP
-- Terraform MCP
 - draw.io MCP
 
 ## 共通方針
