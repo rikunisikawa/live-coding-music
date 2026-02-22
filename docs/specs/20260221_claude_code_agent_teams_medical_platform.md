@@ -118,7 +118,7 @@ Next Action:
 
 ## 10. Implementation
 - Agent定義: `.claude/agents/*.md`
-- Skills: `skills/*.md`
+- Skills: `.agents/skills/*/SKILL.md`
 - 運用テンプレート: `agent-teams/`
 - MCP設定: `configs/mcp/claude-agent-teams.mcp.json`
 

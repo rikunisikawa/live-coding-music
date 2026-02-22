@@ -10,6 +10,7 @@ Codex / Claude / Gemini CLI のいずれでも同一の運用ができるよう�
 - Git MCP
 - Fetch MCP
 - Mermaid MCP
+- Terraform MCP
 - draw.io MCP
 
 ## 共通方針
@@ -28,6 +29,7 @@ Codex / Claude / Gemini CLI のいずれでも同一の運用ができるよう�
 - Codex 用: `configs/mcp/codex.mcp.json`
 - Claude 用: `configs/mcp/claude.mcp.json`
 - Gemini CLI 用: `configs/mcp/gemini.mcp.json`
+- Agent Teams 用: `configs/mcp/claude-agent-teams.mcp.json`
 
 ## 反映コマンド
 - Codex CLI に反映:
