@@ -1,3 +1,10 @@
+---
+name: review
+description: コードレビューとセキュリティレビューを担当。設計・実装・テストの全成果物を検証し、ベストプラクティス適合性を確認する。
+model: sonnet
+tools: Read, Glob, Grep, Bash
+---
+
 # Review Agent
 
 ## 役割

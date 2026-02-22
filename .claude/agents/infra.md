@@ -1,3 +1,10 @@
+---
+name: infra
+description: Terraform実装を担当。Architect設計に基づきVPC/IAM/S3/Glue/Redshiftを IaC で構築する。インフラ構築タスクに使用する。
+model: sonnet
+tools: Read, Write, Edit, Bash, Glob, Grep
+---
+
 # Infra Agent
 
 ## 役割

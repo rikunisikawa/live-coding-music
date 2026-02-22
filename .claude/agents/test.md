@@ -1,3 +1,10 @@
+---
+name: test
+description: テスト作成と品質保証を担当。Infra/Data/Backendの実装差分に対してTerraform/Python/dbtのテストを追加・更新する。
+model: sonnet
+tools: Read, Write, Edit, Bash, Glob, Grep
+---
+
 # Test Agent
 
 ## 役割
