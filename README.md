@@ -55,6 +55,14 @@ tests/               # 単体/統合テスト
 - `fitbit-music build`
 - `fitbit-music run --interval 15m`
 
+### Fitbitデータ取得（MVP実装）
+- 事前に `FITBIT_ACCESS_TOKEN` を環境変数として設定する。
+- 実行例:
+  - `fitbit-music ingest --since 2026-02-15 --until 2026-02-15`
+  - `fitbit-music ingest --since 2026-02-15 --until 2026-02-16 --endpoints heart_rate sleep`
+- 出力先:
+  - `data/raw/<endpoint>/date=YYYY-MM-DD/fetched_at=YYYYMMDDTHHMMSSZ.json`
+
 ## データレイヤ
 - Raw: `data/raw/endpoint/date=YYYY-MM-DD/*.json`
 - Normalized: `data/normalized/*.parquet`
@@ -92,6 +100,7 @@ tests/               # 単体/統合テスト
 
 ## 実行準備チェック
 - `docs/setup_checklist.md` を参照する。
+- FitbitポータルでのOAuth設定は `docs/fitbit_portal_setup.md` を参照する。
 
 ## 開発サイクル（PR作成まで）
 - 変更の確定からPR作成までを一括実行する場合は次を使う。
